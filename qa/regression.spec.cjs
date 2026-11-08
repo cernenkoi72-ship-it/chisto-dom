@@ -11,7 +11,8 @@ async function captureResponsive(page, slug) {
     const overflow = await page.evaluate(() => [...document.querySelectorAll('body *')].filter(e => { const b=e.getBoundingClientRect(); return b.right > innerWidth + 1 || b.left < -1; }).slice(0,12).map(e => ({tag:e.tagName, className:String(e.className).slice(0,100), text:e.textContent.slice(0,40), rect:e.getBoundingClientRect().toJSON()})));
     if (overflow.length) console.log('OVERFLOW_DIAGNOSTIC', width, JSON.stringify(overflow));
     const debug = await page.evaluate(() => ({ viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth, offenders: [...document.querySelectorAll('body *')].map(e => ({ tag: e.tagName, className: String(e.className).slice(0,75), rectRight: Math.round(e.getBoundingClientRect().right), rectLeft: Math.round(e.getBoundingClientRect().left), ownScroll: e.scrollWidth - e.clientWidth })).filter(x => x.rectRight > innerWidth + 1 || x.rectLeft < -1 || x.ownScroll > 1).slice(0,35) }));
-    expect(debug.scrollWidth, 'MOBILE_OVERFLOW ' + JSON.stringify(debug)).toBeLessThanOrEqual(width + 1);
+    const sections = await page.evaluate(() => [...document.querySelectorAll('body, header, nav, main, section, .container, .hero-visual, .price-panel, footer')].map(e => { const before = document.documentElement.scrollWidth; const orig = e.style.overflowX; e.style.overflowX = 'hidden'; const after = document.documentElement.scrollWidth; e.style.overflowX = orig; return { tag: e.tagName, className: e.className, before, after, changed: before - after }; }).filter(x => x.changed > 0).slice(0,30));
+    expect(debug.scrollWidth, 'MOBILE_OVERFLOW ' + JSON.stringify(debug) + ' ISOLATION ' + JSON.stringify(sections)).toBeLessThanOrEqual(width + 1);
     await page.screenshot({ path: path.join(__dirname, 'artifacts', slug + '-' + width + '.png'), fullPage: true });
   }
 }
