@@ -1,0 +1,38 @@
+name: Portfolio regression (QA only)
+on:
+  push:
+    branches:
+      - 'qa/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies
+        run: npm install --prefix qa --no-audit --no-fund
+      - name: Install Chromium
+        run: npx --prefix qa playwright install --with-deps chromium
+      - name: Run regression suite
+        run: npm --prefix qa test
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-browser-evidence
+          path: |
+            qa/artifacts/
+            qa/playwright-report/
+            qa/test-results/
+          if-no-files-found: ignore
+          retention-days: 7
