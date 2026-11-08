@@ -1,4 +1,6 @@
 
+/* ЧИСТО.ДОМ v1.1 — ПОЛНЫЕ СТИЛИ */
+
 :root {
   --green: #117d69;
   --dark: #17332f;
@@ -28,8 +30,15 @@ a {
   text-decoration: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {
@@ -37,16 +46,19 @@ button, input, select, textarea {
   margin: auto;
 }
 
+/* ШАПКА */
+
 .header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #ffffffee;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
 
-.header-inner, .footer-inner {
+.header-inner,
+.footer-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,6 +73,7 @@ button, input, select, textarea {
   font-size: 24px;
   font-weight: 800;
   color: var(--green);
+  white-space: nowrap;
 }
 
 .logo span {
@@ -69,17 +82,22 @@ button, input, select, textarea {
 
 nav {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
 }
 
 nav a {
   color: var(--muted);
+  font-size: 14px;
   font-weight: 600;
 }
 
 nav a:hover {
   color: var(--green);
 }
+
+/* ГЛАВНАЯ */
 
 .hero {
   padding: 90px 0;
@@ -124,14 +142,18 @@ h1 span {
   margin-top: 32px;
 }
 
-.btn, .btn-outline {
+.btn,
+.btn-outline {
   display: inline-block;
   padding: 15px 23px;
   border-radius: 10px;
   font-weight: 700;
-  cursor: pointer;
   text-align: center;
   border: 1px solid var(--green);
+  transition:
+    background 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
 }
 
 .btn {
@@ -141,6 +163,7 @@ h1 span {
 
 .btn:hover {
   background: #08614f;
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -150,9 +173,11 @@ h1 span {
 
 .btn-outline:hover {
   background: #e9f5ef;
+  transform: translateY(-2px);
 }
 
-.small-note, .hint {
+.small-note,
+.hint {
   font-size: 13px;
   color: var(--muted);
 }
@@ -161,28 +186,41 @@ h1 span {
   margin-top: 22px;
 }
 
+/* ФОТО НА ГЛАВНОЙ */
+
 .hero-visual {
   min-height: 450px;
   padding: 35px;
   border-radius: 26px;
+
   background:
-    radial-gradient(circle at 85% 15%, #a5d9c6, transparent 45%),
-    linear-gradient(140deg, #d6eee0, #5cae92);
+    linear-gradient(
+      180deg,
+      rgba(9, 49, 39, 0.10) 10%,
+      rgba(9, 49, 39, 0.88) 100%
+    ),
+    url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=85&fm=jpg")
+    center / cover no-repeat,
+    #5cae92;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  color: white;
+
+  box-shadow: 0 18px 45px rgba(0, 50, 35, 0.12);
 }
 
 .visual-symbol {
   align-self: flex-end;
   font-size: 110px;
-  color: #ffffff77;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1;
 }
 
 .visual-content {
-  color: #104d3d;
+  color: white;
 }
 
 .visual-content > span {
@@ -203,16 +241,19 @@ h1 span {
 }
 
 .visual-tags span {
-  background: #ffffffaa;
+  background: rgba(255, 255, 255, 0.90);
+  color: #104d3d;
   border-radius: 40px;
   padding: 7px 17px;
   font-size: 13px;
   font-weight: 700;
 }
 
+/* ОБЩИЕ СЕКЦИИ */
+
 .section {
   padding: 90px 0;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;
 }
 
 .section-heading {
@@ -220,15 +261,19 @@ h1 span {
   margin-bottom: 42px;
 }
 
-.section-heading h2, .request-layout h2 {
+.section-heading h2,
+.request-layout h2 {
   font-size: clamp(30px, 4vw, 42px);
   margin: 12px 0;
   line-height: 1.2;
 }
 
-.section-heading p, .request-layout p {
+.section-heading p,
+.request-layout p {
   color: var(--muted);
 }
+
+/* УСЛУГИ */
 
 .cards {
   display: grid;
@@ -244,11 +289,20 @@ h1 span {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: white;
+
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 50, 35, 0.08);
 }
 
 .card.featured {
   border: 2px solid var(--green);
-  box-shadow: 0 12px 30px #117d6914;
+  box-shadow: 0 12px 30px rgba(17, 125, 105, 0.08);
 }
 
 .popular {
@@ -262,7 +316,8 @@ h1 span {
   font-size: 12px;
 }
 
-.card-icon {
+.card-icon,
+.step-icon {
   width: 56px;
   height: 56px;
   display: grid;
@@ -278,7 +333,8 @@ h1 span {
   margin-bottom: 4px;
 }
 
-.card p, .card li {
+.card p,
+.card li {
   color: var(--muted);
 }
 
@@ -295,6 +351,7 @@ h1 span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
@@ -311,6 +368,57 @@ h1 span {
   font-size: 13px;
 }
 
+/* КАК МЫ РАБОТАЕМ */
+
+.process-section {
+  background: #f3f8f5;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-card {
+  position: relative;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 50, 35, 0.08);
+}
+
+.step-number {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  color: #c9dfd6;
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.process-card h3 {
+  margin: 25px 0 10px;
+  font-size: 19px;
+}
+
+.process-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* КАЛЬКУЛЯТОР */
+
 .calculator-section {
   background: var(--background);
 }
@@ -323,7 +431,9 @@ h1 span {
   margin: auto;
 }
 
-.calculator-fields, .price-panel, .request-form {
+.calculator-fields,
+.price-panel,
+.request-form {
   padding: 35px;
   border-radius: 18px;
   background: white;
@@ -337,7 +447,9 @@ h1 span {
   margin-bottom: 9px;
 }
 
-input:not([type="checkbox"]), select, textarea {
+input:not([type="checkbox"]),
+select,
+textarea {
   width: 100%;
   padding: 14px;
   border-radius: 9px;
@@ -347,7 +459,9 @@ input:not([type="checkbox"]), select, textarea {
   color: var(--dark);
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: 2px solid #73b7a2;
   outline-offset: 2px;
 }
@@ -403,6 +517,64 @@ input:focus, select:focus, textarea:focus {
   color: var(--green);
 }
 
+/* FAQ */
+
+.faq-section {
+  background: #f8fbf9;
+}
+
+.faq-container {
+  max-width: 850px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0 24px;
+}
+
+.faq-item summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 23px 34px 23px 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--green);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  color: var(--muted);
+  margin: 0;
+  padding: 0 0 24px;
+}
+
+/* ЗАЯВКА */
+
 .request-layout {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -428,6 +600,14 @@ input:focus, select:focus, textarea:focus {
   min-height: 190px;
 }
 
+#copyStatus {
+  color: var(--green);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ПОДВАЛ */
+
 footer {
   background: #102c25;
   color: white;
@@ -439,8 +619,30 @@ footer p {
   font-size: 13px;
 }
 
+/* ДОСТУПНОСТЬ */
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #73b7a2;
+  outline-offset: 4px;
+}
+
+/* ПЛАНШЕТЫ */
+
+@media (max-width: 1020px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav {
+    gap: 12px;
+  }
+}
+
 @media (max-width: 850px) {
-  .hero-grid, .calculator,
+  .hero-grid,
+  .calculator,
   .request-layout {
     grid-template-columns: 1fr;
   }
@@ -454,31 +656,40 @@ footer p {
   }
 
   .hero-visual {
-    min-height: 300px;
+    min-height: 350px;
   }
 
   .request-layout {
     gap: 25px;
   }
-}
 
-@media (max-width: 520px) {
   .header-inner {
     flex-direction: column;
     padding: 15px 0;
   }
+}
 
-  nav {
-    gap: 18px;
-    font-size: 13px;
+/* ТЕЛЕФОНЫ */
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
   }
 
-  .section {
-    padding: 60px 0;
-    scroll-margin-top: 130px;
+  .process-card {
+    padding: 25px;
+  }
+
+  .faq-item {
+    padding: 0 18px;
+  }
+
+  .faq-item summary {
+    font-size: 15px;
   }
 
   .hero-visual {
+    min-height: 350px;
     padding: 24px;
   }
 
@@ -486,13 +697,45 @@ footer p {
     font-size: 28px;
   }
 
-  .calculator-fields, .price-panel,
-  .request-form, .card {
+  .section {
+    padding: 60px 0;
+    scroll-margin-top: 150px;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .calculator-fields,
+  .price-panel,
+  .request-form,
+  .card {
     padding: 24px;
   }
 
   .footer-inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-outline {
+    width: 100%;
+  }
+}
+
+/* БЕЗ АНИМАЦИЙ ПРИ СООТВЕТСТВУЮЩЕЙ НАСТРОЙКЕ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .btn-outline,
+  .card,
+  .process-card {
+    transition: none;
   }
 }

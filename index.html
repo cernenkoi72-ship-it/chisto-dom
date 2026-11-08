@@ -4,32 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Чисто.Дом — демонстрационный сайт услуг уборки квартир">
+  <meta name="description" content="Чисто.Дом — демонстрационный сайт клининговой компании">
   <title>Чисто.Дом — профессиональная уборка</title>
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
 
+  <!-- ШАПКА -->
   <header class="header">
     <div class="container header-inner">
-      <a class="logo" href="#">✦ Чисто<span>.Дом</span></a>
+      <a class="logo" href="#top">✦ Чисто<span>.Дом</span></a>
 
-      <nav aria-label="Навигация">
+      <nav aria-label="Основная навигация">
         <a href="#services">Услуги</a>
+        <a href="#process">Как работаем</a>
         <a href="#calculator">Цены</a>
+        <a href="#faq">FAQ</a>
         <a href="#request">Заявка</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
+
+    <!-- ГЛАВНАЯ -->
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+
+        <div class="hero-content">
           <span class="eyebrow">УБОРКА БЕЗ ЛИШНИХ ЗАБОТ</span>
 
-          <h1>Чистый дом.<br>
+          <h1>
+            Чистый дом.<br>
             <span>Свободное время.</span>
           </h1>
 
@@ -40,18 +49,31 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn" href="#calculator">Рассчитать стоимость →</a>
-            <a class="btn-outline" href="#services">Наши услуги</a>
+            <a class="btn" href="#calculator">
+              Рассчитать стоимость →
+            </a>
+
+            <a class="btn-outline" href="#services">
+              Наши услуги
+            </a>
           </div>
 
-          <p class="small-note">Демонстрационный учебный проект</p>
+          <p class="small-note">
+            Демонстрационный учебный проект
+          </p>
         </div>
 
         <div class="hero-visual">
           <div class="visual-symbol">✦</div>
+
           <div class="visual-content">
             <span>ЧИСТОТА В ДЕТАЛЯХ</span>
-            <h2>Дом, в который<br>приятно вернуться.</h2>
+
+            <h2>
+              Дом, в который<br>
+              приятно вернуться.
+            </h2>
+
             <div class="visual-tags">
               <span>Уют</span>
               <span>Свежесть</span>
@@ -59,11 +81,14 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
+    <!-- УСЛУГИ -->
     <section class="section" id="services">
       <div class="container">
+
         <div class="section-heading">
           <span class="eyebrow">ЧТО МЫ ПРЕДЛАГАЕМ</span>
           <h2>Уборка для любой задачи</h2>
@@ -71,57 +96,145 @@
         </div>
 
         <div class="cards">
+
           <article class="card">
             <div class="card-icon">✧</div>
+
             <h3>Поддерживающая</h3>
-            <p>Регулярная уборка для поддержания порядка.</p>
+
+            <p>
+              Регулярная уборка для поддержания порядка.
+            </p>
+
             <ul>
               <li>Удаление пыли</li>
               <li>Влажная уборка</li>
               <li>Уборка кухни и санузла</li>
             </ul>
+
             <div class="card-bottom">
               <strong>от 1 500 ₽</strong>
-              <a href="#calculator">Рассчитать →</a>
+
+              <a href="#calculator" data-cleaning-type="regular">
+                Рассчитать →
+              </a>
             </div>
           </article>
 
           <article class="card featured">
             <span class="popular">Популярная услуга</span>
+
             <div class="card-icon">✦</div>
+
             <h3>Генеральная</h3>
-            <p>Тщательная уборка всех основных зон квартиры.</p>
+
+            <p>
+              Тщательная уборка всех основных зон квартиры.
+            </p>
+
             <ul>
               <li>Глубокая очистка поверхностей</li>
               <li>Уборка труднодоступных мест</li>
               <li>Кухня и санузел</li>
             </ul>
+
             <div class="card-bottom">
               <strong>от 3 000 ₽</strong>
-              <a href="#calculator">Рассчитать →</a>
+
+              <a href="#calculator" data-cleaning-type="general">
+                Рассчитать →
+              </a>
             </div>
           </article>
 
           <article class="card">
             <div class="card-icon">⌂</div>
+
             <h3>После ремонта</h3>
-            <p>Наводим порядок после строительных работ.</p>
+
+            <p>
+              Наводим порядок после строительных работ.
+            </p>
+
             <ul>
               <li>Удаление строительной пыли</li>
               <li>Очистка поверхностей</li>
               <li>Тщательная влажная уборка</li>
             </ul>
+
             <div class="card-bottom">
               <strong>от 5 000 ₽</strong>
-              <a href="#calculator">Рассчитать →</a>
+
+              <a href="#calculator" data-cleaning-type="renovation">
+                Рассчитать →
+              </a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
+    <!-- КАК МЫ РАБОТАЕМ -->
+    <section class="section process-section" id="process">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">ВСЁ ПРОСТО</span>
+          <h2>Как мы работаем</h2>
+          <p>От расчёта стоимости до чистоты в доме.</p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card">
+            <span class="step-number">01</span>
+            <div class="step-icon">✎</div>
+            <h3>Оставляете заявку</h3>
+            <p>
+              Выбираете тип уборки, указываете площадь
+              и дополнительные услуги.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="step-number">02</span>
+            <div class="step-icon">◷</div>
+            <h3>Согласовываем детали</h3>
+            <p>
+              Уточняем объём работ, окончательную цену
+              и удобное время.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="step-number">03</span>
+            <div class="step-icon">✦</div>
+            <h3>Проводим уборку</h3>
+            <p>
+              Выполняем согласованные работы
+              и наводим порядок.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="step-number">04</span>
+            <div class="step-icon">✓</div>
+            <h3>Проверяем результат</h3>
+            <p>
+              Вместе оцениваем качество уборки
+              и завершаем заказ.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- КАЛЬКУЛЯТОР -->
     <section class="section calculator-section" id="calculator">
       <div class="container">
+
         <div class="section-heading">
           <span class="eyebrow">ПРОСТО И ПОНЯТНО</span>
           <h2>Калькулятор стоимости</h2>
@@ -129,8 +242,11 @@
         </div>
 
         <div class="calculator">
+
           <div class="calculator-fields">
+
             <label for="cleaningType">Тип уборки</label>
+
             <select id="cleaningType">
               <option value="regular">Поддерживающая</option>
               <option value="general">Генеральная</option>
@@ -138,8 +254,16 @@
             </select>
 
             <label for="area">Площадь квартиры (м²)</label>
-            <input id="area" type="number"
-                   min="20" max="300" value="40" required>
+
+            <input
+              id="area"
+              type="number"
+              min="20"
+              max="300"
+              step="1"
+              value="40"
+            >
+
             <p class="hint">От 20 до 300 м²</p>
 
             <h3>Дополнительные услуги</h3>
@@ -158,31 +282,107 @@
               <input type="checkbox" id="fridge">
               Мытьё холодильника (+400 ₽)
             </label>
+
           </div>
 
           <div class="price-panel">
             <span>Предварительная стоимость</span>
-            <div class="price" id="total" aria-live="polite">2 800 ₽</div>
-            <p id="priceDetails">Расчёт по выбранным параметрам</p>
+
+            <div class="price" id="total" aria-live="polite">
+              2 800 ₽
+            </div>
+
+            <p id="priceDetails">
+              Расчёт по выбранным параметрам
+            </p>
+
             <p class="price-warning">
               Цены демонстрационные. Итоговая стоимость
               реального заказа определяется исполнителем.
             </p>
-            <a class="btn" href="#request">Подготовить заявку →</a>
+
+            <a class="btn" href="#request">
+              Подготовить заявку →
+            </a>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-container">
+
+        <div class="section-heading">
+          <span class="eyebrow">ОТВЕЧАЕМ НА ВОПРОСЫ</span>
+          <h2>Частые вопросы</h2>
+          <p>Полезная информация перед заказом.</p>
+        </div>
+
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>Сколько длится уборка?</summary>
+            <p>
+              Продолжительность зависит от площади,
+              типа уборки и объёма загрязнений.
+              Время согласовывается заранее.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Нужно ли покупать моющие средства?</summary>
+            <p>
+              Наличие средств и оборудования
+              уточняется при согласовании заказа.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли заказать уборку на выходных?</summary>
+            <p>
+              Доступные даты зависят от расписания
+              исполнителя и согласовываются отдельно.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Почему цена предварительная?</summary>
+            <p>
+              Калькулятор использует примерные тарифы.
+              Окончательная стоимость зависит от
+              состояния помещения и объёма работ.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как отправить заявку?</summary>
+            <p>
+              В демоверсии можно сформировать и скопировать
+              текст заявки. Автоматическая отправка
+              пока не подключена.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАЯВКА -->
     <section class="section" id="request">
       <div class="container request-layout">
+
         <div>
           <span class="eyebrow">ОСТАЛСЯ ОДИН ШАГ</span>
+
           <h2>Подготовьте заявку</h2>
+
           <p>
             Заполните данные, чтобы сформировать текст заявки.
             Его можно скопировать и отправить исполнителю.
           </p>
+
           <p class="small-note">
             Это демоверсия. Сайт не отправляет данные
             на сервер и не принимает реальные заказы.
@@ -190,36 +390,68 @@
         </div>
 
         <form class="request-form" id="requestForm">
+
           <label for="clientName">Ваше имя</label>
-          <input id="clientName" required
-                 maxlength="60" placeholder="Александр">
+
+          <input
+            id="clientName"
+            type="text"
+            required
+            maxlength="60"
+            placeholder="Александр"
+          >
 
           <label for="clientContact">Контакт для связи</label>
-          <input id="clientContact" required
-                 maxlength="100"
-                 placeholder="Телефон или Telegram">
+
+          <input
+            id="clientContact"
+            type="text"
+            required
+            maxlength="100"
+            placeholder="+7 999 123-45-67 или @username"
+          >
 
           <label for="comment">Комментарий</label>
-          <textarea id="comment" rows="4"
-                    maxlength="500"
-                    placeholder="Дополнительные пожелания"></textarea>
+
+          <textarea
+            id="comment"
+            rows="4"
+            maxlength="500"
+            placeholder="Дополнительные пожелания"
+          ></textarea>
 
           <button class="btn" type="submit">
             Сформировать заявку
           </button>
 
           <div id="requestResult" hidden>
+
             <label for="resultText">Готовый текст заявки</label>
-            <textarea id="resultText" rows="10" readonly></textarea>
-            <button type="button" class="btn-outline"
-                    id="copyButton">Скопировать текст</button>
+
+            <textarea
+              id="resultText"
+              rows="10"
+              readonly
+            ></textarea>
+
+            <button
+              type="button"
+              class="btn-outline"
+              id="copyButton"
+            >
+              Скопировать текст
+            </button>
+
             <p id="copyStatus" role="status"></p>
           </div>
+
         </form>
       </div>
     </section>
+
   </main>
 
+  <!-- ПОДВАЛ -->
   <footer>
     <div class="container footer-inner">
       <strong>✦ Чисто.Дом</strong>
