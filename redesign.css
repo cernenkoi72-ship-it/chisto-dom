@@ -73,3 +73,6 @@ footer p{color:#adc7b8}
 
 /* Prevent decorative pseudo-elements from expanding the mobile document width. */
 html,body{overflow-x:clip}
+
+/* Avoid the intentionally off-canvas 25px price decoration on narrow screens. */
+.price-panel::before{content:none!important;display:none!important}
