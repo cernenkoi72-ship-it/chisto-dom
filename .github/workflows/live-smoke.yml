@@ -1,0 +1,41 @@
+name: Live Cloudflare Pages smoke check
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      SITE_URL: "https://chisto-dom.pages.dev/"
+      EXPECTED_MARKER: "Дом в порядке."
+    steps:
+      - name: Verify published HTML and CSS (no user data)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os,time,urllib.request,sys
+          url=os.environ["SITE_URL"]; marker=os.environ["EXPECTED_MARKER"]
+          for attempt in range(1,24):
+            try:
+              headers={"User-Agent":"CHERNENKO-SITES-QA/1.0","Cache-Control":"no-cache"}
+              def get(address):
+                req=urllib.request.Request(address,headers=headers)
+                with urllib.request.urlopen(req,timeout=12) as res:
+                  return res.read().decode("utf-8","replace"), res.status
+              html,status=get(url+"?qa=20261108")
+              css,css_status=get(url+"redesign.css?qa=20261108")
+              ok="redesign.css" in html and marker in html and "CHERNENKO SITES" in css
+              print(f"attempt {attempt}: html={status}, css={css_status}, marker={marker in html}, redesign={ok}",flush=True)
+              if ok:
+                print("PASS: production page serves new design and CSS",flush=True)
+                sys.exit(0)
+            except Exception as error:
+              print(f"attempt {attempt}: {type(error).__name__}: {error}",flush=True)
+            time.sleep(10)
+          print("FAIL: Live published site not verified within smoke window.",file=sys.stderr)
+          sys.exit(1)
+          PY
