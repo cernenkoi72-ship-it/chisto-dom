@@ -8,6 +8,8 @@ async function captureResponsive(page, slug) {
   for (const width of widths) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto('/');
+    const overflow = await page.evaluate(() => [...document.querySelectorAll('body *')].filter(e => { const b=e.getBoundingClientRect(); return b.right > innerWidth + 1 || b.left < -1; }).slice(0,12).map(e => ({tag:e.tagName, className:String(e.className).slice(0,100), text:e.textContent.slice(0,40), rect:e.getBoundingClientRect().toJSON()})));
+    if (overflow.length) console.log('OVERFLOW_DIAGNOSTIC', width, JSON.stringify(overflow));
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
     await page.screenshot({ path: path.join(__dirname, 'artifacts', slug + '-' + width + '.png'), fullPage: true });
   }
